@@ -5,6 +5,9 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 
 export default class App extends React.Component {
+  change(x) {
+    return x*5;
+  }
   render() {
     return (
       <NativeRouter>
