@@ -11,5 +11,5 @@ test('Login test email', () => {
     // expect(HomeData.change(2)).toBe(10);
     // console.log(regex.email.test('abiezer95gmail.com'));
     
-    expect(regex.username.test('')).toBe(true);
+    expect(regex.username.test('holajshrueur')).toBe(true);
 });

@@ -14,7 +14,7 @@ export default class App extends React.Component {
           <Route exact path="/" render={() => (
             <Login />
           )}/>
-          <Route exact path="/signup" render={() => (
+          <Route path="/signup" render={() => (
               <SignUp />
           )}/>
       </NativeRouter>
