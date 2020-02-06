@@ -63,8 +63,7 @@ export default class SignUp extends React.Component {
               <View style={{marginTop: 13}}/>
 
               <Content>
-                <Link to="/"
-                      underlayColor="#red">
+                <Link to="/">
                   <Text style={{color:'#fff',fontSize: 13}}>¿Ya tienes una cuenta?</Text>
                 </Link>
               </Content>

@@ -6,6 +6,15 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Link } from "react-router-native";
 
 export default class Login extends React.Component {
+    constructor(props){
+      super(props)
+      this.state = {
+        user: '',
+        password: '',
+        isLogined: false
+      }
+    }
+
     render() {
     return (
       <Container>
@@ -32,8 +41,7 @@ export default class Login extends React.Component {
               
               <View style={{marginTop: 13,height:50, flexDirection:'row'}}>
                 <Content>
-                  <Link to="/signup"
-                        underlayColor="#red">
+                  <Link to="/signup">
                     <Text style={{color:'#fff',fontSize: 16}}>Registrarme</Text>
                   </Link>
                 </Content>
