@@ -8,12 +8,12 @@ export default class App extends React.Component {
   render() {
     return (
       <NativeRouter>
-          <Route exact path="/" render={() => (
-            <Login />
-          )}/>
-          <Route exact path="/signup" render={() => (
-              <SignUp />
-          )}/>
+          <Route exact path="/" >
+            <Login/>
+          </Route>
+          <Route path="/singup" >
+            <SignUp/>
+          </Route>
       </NativeRouter>
       )
   }

@@ -1,80 +1,114 @@
-import * as React from 'react';
-import { styles } from '../assets/Main_style';
-import { View, Dimensions, Image, Text } from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Label, Button, DatePicker } from 'native-base';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Link } from "react-router-native";
+// import * as React from 'react';
+// import { styles } from '../assets/Main_style';
+// import { View, Dimensions, Image, Text } from 'react-native';
+// import { Container, Header, Content, Form, Item, Input, Label, Button, DatePicker } from 'native-base';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+// import { Link } from "react-router-native";
 
-var d = new Date();
+// var d = new Date();
+import React, { Component } from 'react';
+import { StyleSheet,Image, Text } from 'react-native';
+import { Container,
+  Header, Button,
+  Content,Footer,Fab,Item,
+  FooterTab,Card ,Icon,
+  Input,Title, Form, Left} from 'native-base';
 
 export default class SignUp extends React.Component {
     render() {
     return (
-      <Container>
-        <Content style={styles.container}>
-          <Image source={require('../assets/wallpaper.jpg')} style={styles.wallpaper} />
-   
-          <Content style={styles.form}>
-            <Form>
-              <Item floatingLabel >
-                <Label style={{color:'#fff'}}>
-                <Icon name='inbox' size={18} color='#fff'/> Nombre Completo</Label>
-                <Input style={{color:'#fff'}} />
+      <Container style={styles.Body}>
+        <Header>
+          <Left style ={styles.PaddingExtra} >
+          <Button transparent >
+         <Icon name='arrow-back' />
+          </Button></Left>
+          </Header>
+       <Form style={styles.information}>
+             <Item>
+              <Icon name='people' />
+                  <Input style ={styles.InputDesingExtra} placeholder="Name"/>
               </Item>
-
-              <Item floatingLabel last>
-                <Label style={{color:'#fff'}}>
-                <Icon name='user' size={18} color='#fff'/> Usuario</Label>
-                <Input style={{color:'#fff'}} />
+              <Item>
+              <Icon name='people' />
+                  <Input style ={styles.InputDesingExtra} placeholder="User-name"/>
               </Item>
-
-              <Item floatingLabel last> 
-                <Label style={{color:'#fff'}}><Icon name='lock' size={18} color='#fff'/> Password</Label>
-                <Input style={{color:'#fff'}} />
+              <Item>
+              <Icon name='people' />
+                  <Input style ={styles.InputDesingExtra} placeholder="Fecha">
+                    {/* <DatePicker placeHolderText="Select date"/> */}
+                  </Input>
               </Item>
-
-              <View style={{marginTop: 20}}/>
+              <Item>
+              <Icon name="key"/>
+                  <Input style ={styles.InputDesingExtra} placeholder="Password"/>
+              </Item>    
+               <Item>
+              <Icon name="key"/>
+                  <Input style ={styles.InputDesingExtra} placeholder=""/>
+              </Item>                  
               
-              <Content>
-                <DatePicker
-                  // defaultDatae={new Date(2018, 4, 4)}
-                  // minimumDate={new Date(2018, 1, 1)}
-                  // maximumDate={new Date(2018, 12, 31)}
-                  locale={"es"}
-                  animationType={"fade"}
-                  androidMode={"default"}
-                  placeHolderText="Select date"
-                  textStyle={{ color: "green" }}
-                  placeHolderTextStyle={{ color: "#d3d3d3" }}
-                  onDateChange={this.date}
-                  disabled={false}
-                  />
-                  <Text style={{color:'#fff',fontSize: 15}}>
-                    Date: {d.getDate()+ '/' + (d.getMonth()+1) + '/' + d.getFullYear()}
-                  </Text>
-              </Content>
-
-              <View style={{marginTop: 20}}/>
+                    <Button light style={styles.adaptationOfButton} onPress={()=>{alert('Bienvenido/a !')}}><Text style={styles.textBtn}>Register</Text></Button>
               
-              <Button block warning>
-                <Text>Entrar</Text>
-              </Button>
-
-              <View style={{marginTop: 13}}/>
-
-              <Content>
-                <Link to="/"
-                      underlayColor="#red">
-                  <Text style={{color:'#fff',fontSize: 13}}>¿Ya tienes una cuenta?</Text>
-                </Link>
-              </Content>
-            </Form>
-          </Content>
-
-        </Content>
+             </Form>
       </Container>
     );
   }
 }
 
 
+
+const styles = StyleSheet.create({
+  Body:{
+    backgroundColor:'#DCB2A9'
+  },
+  image_style:{
+    marginLeft:'23%',
+    marginTop:15,
+    height: 200,
+    width: "60%",
+    flex: 1,
+    borderRadius:500
+  },
+  PaddingExtra:{
+    paddingLeft: 10
+  },
+  information: {
+    flex: 1,
+    backgroundColor: '#FCFCF8',
+    marginTop:'5%',
+    margin:'5%',
+    width:'90%',
+    height:400,
+    alignItems: 'center',
+    borderRadius:10,
+    justifyContent: 'center',
+    padding:'2%',
+    paddingTop:100,
+    paddingBottom:'1%',
+  },
+  InputDesingExtra:{
+    borderColor: 'transparent',
+    borderWidth: 1 ,padding:5,width:'100%'
+  },
+  paddingAdictional:{
+    paddingTop:30
+  },
+  adaptationOfButton:{
+    width:'80%',
+    justifyContent:'center',
+    margin:20,
+    
+  },
+   textBtn:{
+    color:'#000',
+    padding:1,
+    fontWeight:'bold',
+    textAlign: 'center',
+    // fontFamily: 'Cochin',
+    
+  },
+  
+  
+});
+module.export = SignUp
