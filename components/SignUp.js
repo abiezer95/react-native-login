@@ -50,7 +50,7 @@ export default class SignUp extends React.Component {
               </Item>
                             
               
-                    <Button light style={styles.adaptationOfButton} onPress={()=>{alert('Bienvenido/a !')}}><Text style={styles.textBtn}>Register</Text></Button>
+                    <Button light style={styles.adaptationOfButton} ><Text style={styles.textBtn}>Register</Text></Button>
               
              </Form>
              </Content>
@@ -117,4 +117,3 @@ const styles = StyleSheet.create({
   
   
 });
-module.export = SignUp

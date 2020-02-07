@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -162,7 +162,9 @@
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,16 +176,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,7 +205,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -279,17 +283,19 @@ import { Container,
 import { Link } from 'react-router-native';
 &nbsp;
 export default class Login extends React.Component {
-<span class="fstat-no" title="function not covered" >    co</span>nstructor(props){
-<span class="cstat-no" title="statement not covered" >      super(props)</span>
-<span class="cstat-no" title="statement not covered" >      this.state = {</span>
+    constructor(props){
+      super(props);
+      this.state = {
         user: '',
         password: '',
         isLogined: false
       }
     }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    re</span>nder() {
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    handledInput =<span class="fstat-no" title="function not covered" >( </span>name, value)=&gt;{
+<span class="cstat-no" title="statement not covered" >      eval('this.setState({'+name+': value})');</span>
+    }
+    render() {
+    return (
       &lt;Container style={styles.Body}&gt;
         
       &lt;Header style={styles.paddingAdictional}&gt;
@@ -300,13 +306,13 @@ export default class Login extends React.Component {
             &lt;Form style={styles.information}&gt;
             &lt;Item&gt;
             &lt;Icon name='people' /&gt;
-                &lt;Input style ={styles.InputDesingExtra} placeholder="User-Name"/&gt;
+                &lt;Input style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChangeText={this.handledUser} value={this.state.user}/&gt;
             &lt;/Item&gt;
             &lt;Item&gt;
             &lt;Icon name="key"/&gt;
-                &lt;Input style ={styles.InputDesingExtra} placeholder="Password"/&gt;
+                &lt;Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChangeText={this.handledInput} value={this.state.password}/&gt;
             &lt;/Item&gt;                  
-                &lt;Button light style={styles.adaptationOfButton} onPress={<span class="fstat-no" title="function not covered" >()</span>=&gt;{<span class="cstat-no" title="statement not covered" >alert('Bienvenido/a !')}</span>}&gt;&lt;Text style={styles.textBtn}&gt;Log in&lt;/Text&gt;&lt;/Button&gt;
+                &lt;Button light style={styles.adaptationOfButton} &gt;&lt;Text style={styles.textBtn}&gt;Log in&lt;/Text&gt;&lt;/Button&gt;
             &lt;/Form&gt;
             &lt;Content&gt;
               &lt;Link to="/signup"&gt;
@@ -381,7 +387,7 @@ module.export = Login</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Feb 07 2020 11:30:20 GMT-0400 (Atlantic Standard Time)
+                at Fri Feb 07 2020 15:22:44 GMT-0400 (Atlantic Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

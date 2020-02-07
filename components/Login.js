@@ -10,14 +10,16 @@ import { Link } from 'react-router-native';
 
 export default class Login extends React.Component {
     constructor(props){
-      super(props)
+      super(props);
       this.state = {
         user: '',
         password: '',
         isLogined: false
       }
     }
-
+    handledInput =( name, value)=>{
+      eval('this.setState({'+name+': value})');
+    }
     render() {
     return (
       <Container style={styles.Body}>
@@ -30,13 +32,13 @@ export default class Login extends React.Component {
             <Form style={styles.information}>
             <Item>
             <Icon name='people' />
-                <Input style ={styles.InputDesingExtra} placeholder="User-Name"/>
+                <Input style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChangeText={this.handledUser} value={this.state.user}/>
             </Item>
             <Item>
             <Icon name="key"/>
-                <Input style ={styles.InputDesingExtra} placeholder="Password"/>
+                <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChangeText={this.handledInput} value={this.state.password}/>
             </Item>                  
-                <Button light style={styles.adaptationOfButton} onPress={()=>{alert('Bienvenido/a !')}}><Text style={styles.textBtn}>Log in</Text></Button>
+                <Button light style={styles.adaptationOfButton} ><Text style={styles.textBtn}>Log in</Text></Button>
             </Form>
             <Content>
               <Link to="/signup">

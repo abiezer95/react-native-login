@@ -5,18 +5,15 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 
 export default class App extends React.Component {
-  change(x) {
-    return x*5;
-  }
   render() {
     return (
       <NativeRouter>
-          <Route exact path="/" render={() => (
-            <Login />
-          )}/>
-          <Route path="/signup" render={() => (
-              <SignUp />
-          )}/>
+          <Route exact path="/">
+            <Login/>
+          </Route>
+          <Route path="/signup">
+            <SignUp/>
+          </Route>
       </NativeRouter>
       )
   }
