@@ -1,20 +1,20 @@
-import * as React from 'react';
-import { View,Text, StyleSheet, Dimensions, Image } from 'react-native';
-import { NativeRouter, Route, Link } from "react-router-native";
-import Login from './components/Login';
-import SignUp from './components/SignUp';
+import React, {useRef} from 'react';
+import * as Font from 'expo-font';
+import {AppLoading} from "expo";
+import StackNavigator from './Navigation/Stack';
+import {NavigationContainer} from "@react-navigation/native";
 
-export default class App extends React.Component {
-  render() {
+
+export default function App()  {
+  const ref = useRef(null);
+
+  Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+    }).then(res => res);
     return (
-      <NativeRouter>
-          <Route exact path="/" >
-            <Login/>
-          </Route>
-          <Route path="/singup" >
-            <SignUp/>
-          </Route>
-      </NativeRouter>
-      )
-  }
+        <NavigationContainer ref={ref}>
+          <StackNavigator/>
+        </NavigationContainer>
+    )
 }
