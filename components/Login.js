@@ -40,7 +40,7 @@ export default class Login extends React.Component {
             </Form>
             <Content>
               <Link to="/signup">
-              <Text style={styles.textBtn}>Ya tienes Cuenta ?</Text>
+              <Text style={{marginBottom:50,textAlign: 'center',fontSize:16}}>You don't have an account?</Text>
              </Link>
              </Content>
         </Content>
@@ -58,10 +58,10 @@ Body:{
   backgroundColor:'#DCB2A9'
 },
 image_style:{
-  marginLeft:'23%',
+  marginLeft:'6%',
   marginTop:15,
   height: 200,
-  width: "60%",
+  width: "95%",
   flex: 1,
   borderRadius:500
 },
@@ -95,6 +95,7 @@ adaptationOfButton:{
  textBtn:{
   color:'#000',
   padding:1,
+  // marginBottom:50,
   fontWeight:'bold',
   textAlign: 'center',
   // fontFamily: 'Cochin',
