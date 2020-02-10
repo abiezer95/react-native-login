@@ -13,7 +13,7 @@ export default class SignUp extends React.Component {
       <Container style={styles.Body}>
         <Content>
         <Header>
-          <Left style ={styles.PaddingExtra}  >
+          <Left style ={styles.PaddingExtra} >
           <Button transparent >
          <Link to="/"><Icon name='arrow-back' /></Link>
           </Button></Left>

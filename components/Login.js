@@ -8,6 +8,7 @@ import { Container,
   Input,Title, Form, Left} from 'native-base';
 import { Link } from 'react-router-native';
 
+
 export default class Login extends React.Component {
     constructor(props){
       super(props);
@@ -16,10 +17,13 @@ export default class Login extends React.Component {
         password: '',
         isLogined: false
       }
+      
     }
-    handledInput =( name, value)=>{
-      eval('this.setState({'+name+': value})');
-    }
+    
+
+    // handledInput(event){
+    //   this.setState({event.target.value}) 
+    // }
     render() {
     return (
       <Container style={styles.Body}>
@@ -32,7 +36,7 @@ export default class Login extends React.Component {
             <Form style={styles.information}>
             <Item>
             <Icon name='people' />
-                <Input style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChangeText={this.handledUser} value={this.state.user}/>
+                <Input style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChangeText={this.handledInput} value={this.state.user}/>
             </Item>
             <Item>
             <Icon name="key"/>
