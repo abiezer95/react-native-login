@@ -10,20 +10,26 @@ import { Link } from 'react-router-native';
 
 
 export default class Login extends React.Component {
-    constructor(props){
-      super(props);
+    constructor(){
+      super();
       this.state = {
-        user: '',
-        password: '',
-        isLogined: false
+        'user': '',
+        'password': '',
+        // isLogined: false
       }
+    }
+    handledInput = (e, name) => {
+      this.setState({
+          [name]: e.target.value
+      })
+     alert(e.nativeEvent.text)
+      
+    }             
+    inputChange = (i) =>{
+      i.preventDefault();
+      this.props.onAddTodo(this.state);
       
     }
-    
-
-    // handledInput(event){
-    //   this.setState({event.target.value}) 
-    // }
     render() {
     return (
       <Container style={styles.Body}>
@@ -33,21 +39,23 @@ export default class Login extends React.Component {
       </Header>
         <Content>
           <Image style={styles.image_style} source={{uri:'https://www.lupusasturias.org/data/fotos/noticias/g_20_historia_clinica_.png'}} />
-            <Form style={styles.information}>
+            <Form style={styles.information} onSubmit={this.inputChange}>
             <Item>
             <Icon name='people' />
-                <Input style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChangeText={this.handledInput} value={this.state.user}/>
+                <Input style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChange={(env) => {
+                  console.log(env)
+                  this.handledInput(env, 'user')
+                  }} value={this.state.user}/>
             </Item>
             <Item>
             <Icon name="key"/>
-                <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChangeText={this.handledInput} value={this.state.password}/>
+                <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(env) => this.handledInput(env, 'password')} value={this.state.password}/>
             </Item>                  
-                <Button light style={styles.adaptationOfButton} ><Text style={styles.textBtn}>Log in</Text></Button>
+                <Button light style={styles.adaptationOfButton} onClick={this.onAddTodo}><Text style={styles.textBtn}>Log in</Text></Button>
             </Form>
             <Content>
               <Link to="/signup">
-              <Text style={{marginBottom:50,textAlign: 'center',fontSize:16}}>You don't have an account?</Text>
-             </Link>
+              <Text style={{marginBottom:50,textAlign: 'center',fontSize:16}}>You don't have an account?</Text></Link>
              </Content>
         </Content>
       <Footer/>
