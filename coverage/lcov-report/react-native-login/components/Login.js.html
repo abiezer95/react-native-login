@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.33% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/12</span>
+                <span class='fraction'>9/13</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.33% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/12</span>
+                <span class='fraction'>9/13</span>
             </div>
         
             
@@ -173,7 +173,10 @@
 <a name='L115'></a><a href='#L115'>115</a>
 <a name='L116'></a><a href='#L116'>116</a>
 <a name='L117'></a><a href='#L117'>117</a>
-<a name='L118'></a><a href='#L118'>118</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -186,26 +189,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -217,6 +221,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -305,21 +311,22 @@ export default class Login extends React.Component {
     constructor(){
       super();
       this.state = {
-        user: '',
-        password: '',
+        'user': '',
+        'password': '',
         // isLogined: false
       }
     }
-    
-    handledInput = <span class="fstat-no" title="function not covered" >(v</span>alue, name)=&gt;{
-<span class="cstat-no" title="statement not covered" >      this.setState({</span>
-          [name]: value
+    handledInput = ({text}, name) =&gt; {
+      this.setState({
+          [name]: text
       })
-      
-    }
+&nbsp;
+      return this.state[name]
+    }             
     inputChange = <span class="fstat-no" title="function not covered" >(i</span>) =&gt;{
 <span class="cstat-no" title="statement not covered" >      i.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >      this.props.onAddTodo(this.state);</span>
+      
     }
     render() {
     return (
@@ -333,18 +340,20 @@ export default class Login extends React.Component {
             &lt;Form style={styles.information} onSubmit={this.inputChange}&gt;
             &lt;Item&gt;
             &lt;Icon name='people' /&gt;
-                &lt;Input style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChange={<span class="fstat-no" title="function not covered" >(e</span>nv) =&gt; <span class="cstat-no" title="statement not covered" >this.handledInput(env, 'user')}</span> value={this.state.user}/&gt;
+                &lt;Input testId='username' style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChange={<span class="fstat-no" title="function not covered" >(n</span>ativeEvent) =&gt; <span class="cstat-no" title="statement not covered" >this.handledInput(nativeEvent, 'user')}</span> value={this.state.user}/&gt;
             &lt;/Item&gt;
             &lt;Item&gt;
             &lt;Icon name="key"/&gt;
-                &lt;Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={<span class="fstat-no" title="function not covered" >(e</span>nv) =&gt; <span class="cstat-no" title="statement not covered" >this.handledInput(env, 'password')}</span> value={this.state.password}/&gt;
+                &lt;Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={<span class="fstat-no" title="function not covered" >({</span>nativeEvent}) =&gt; {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                  this.handledInput(nativeEvent, 'password')</span>
+                }} value={this.state.password}/&gt;
             &lt;/Item&gt;                  
                 &lt;Button light style={styles.adaptationOfButton} onClick={this.onAddTodo}&gt;&lt;Text style={styles.textBtn}&gt;Log in&lt;/Text&gt;&lt;/Button&gt;
             &lt;/Form&gt;
             &lt;Content&gt;
               &lt;Link to="/signup"&gt;
-              &lt;Text style={{marginBottom:50,textAlign: 'center',fontSize:16}}&gt;You don't have an account?&lt;/Text&gt;
-             &lt;/Link&gt;
+              &lt;Text style={{marginBottom:50,textAlign: 'center',fontSize:16}}&gt;You don't have an account?&lt;/Text&gt;&lt;/Link&gt;
              &lt;/Content&gt;
         &lt;/Content&gt;
       &lt;Footer/&gt;
@@ -414,7 +423,7 @@ module.export = Login</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Feb 11 2020 08:52:47 GMT-0400 (Atlantic Standard Time)
+                at Tue Feb 11 2020 16:47:30 GMT-0400 (Atlantic Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

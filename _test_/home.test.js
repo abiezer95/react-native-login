@@ -2,11 +2,19 @@ import 'react-native';
 import React, {Component} from 'react';
 // import Home from '../App';
 import regex from '../assets/testing_src/Regular_expresions_login';
-import TestRenderer from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 import Login from '../components/Login';
 import App from '../App'
 import SignUp from '../components/SignUp'
 // import { Component } from 'react';
+
+
+it('Login habdledInput', () => {
+    const tree = renderer.create(<Login/>).getInstance()
+    expect(tree.handledInput({text: 'DATAS'})).toBe('DATAS')
+    expect(tree.handledInput('data')).toBe(undefined)
+    // expect(tree.inputChange('data')).toBe(undefined)
+})
 
 jest.useFakeTimers();
 
@@ -33,7 +41,7 @@ jest.useFakeTimers();
 // export default homeTest;
 
 test('Login test user-name', () => {
-    let HomeData = TestRenderer.create(<Login />).getInstance();
+    let HomeData = renderer.create(<Login />).getInstance();
     // expect(HomeData.change(username)).toBe(10);
     // console.log(regex.email.test('abiezer95gmail.com'));
     expect(regex.username.test('holajshrueur')).toBe(true);
@@ -50,20 +58,23 @@ test('Login test phoneNumber', () => {
     
     // expect(HomeData.change(username)).toBe(10);
     // console.log(regex.email.test('abiezer95gmail.com'));
-    expect(regex.phoneNumber.test('809-555-8587')).toBe(true);
+    expect(regex.phoneNumber.test('809-999-8587')).toBe(true);
 });
+
 test('<Login />',()=>{
-    const login = TestRenderer.create(<Login/>);
+    const login = renderer.create(<Login/>);
     
     expect(login)
 });
+
 test('<SignUp />',()=>{
-    const sign = TestRenderer.create(<SignUp />);
+    const sign = renderer.create(<SignUp />)
 
     expect(sign)
+    
 });
 test('<App />',()=>{
-    const app = TestRenderer.create(<App />);
+    const app = renderer.create(<App />);
 
     expect(app)
 });

@@ -18,12 +18,12 @@ export default class Login extends React.Component {
         // isLogined: false
       }
     }
-    handledInput = (e, name) => {
+    handledInput = ({text}, name) => {
       this.setState({
-          [name]: e.target.value
+          [name]: text
       })
-     alert(e.nativeEvent.text)
-      
+
+      return this.state[name]
     }             
     inputChange = (i) =>{
       i.preventDefault();
@@ -42,14 +42,14 @@ export default class Login extends React.Component {
             <Form style={styles.information} onSubmit={this.inputChange}>
             <Item>
             <Icon name='people' />
-                <Input style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChange={(env) => {
-                  console.log(env)
-                  this.handledInput(env, 'user')
-                  }} value={this.state.user}/>
+                <Input testId='username' style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChange={(nativeEvent) => this.handledInput(nativeEvent, 'user')} value={this.state.user}/>
             </Item>
             <Item>
             <Icon name="key"/>
-                <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(env) => this.handledInput(env, 'password')} value={this.state.password}/>
+                <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={({nativeEvent}) => {
+
+                  this.handledInput(nativeEvent, 'password')
+                }} value={this.state.password}/>
             </Item>                  
                 <Button light style={styles.adaptationOfButton} onClick={this.onAddTodo}><Text style={styles.textBtn}>Log in</Text></Button>
             </Form>
