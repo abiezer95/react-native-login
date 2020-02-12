@@ -25,11 +25,12 @@ export default class Login extends React.Component {
 
       return this.state[name]
     }             
-    inputChange = (i) =>{
-      i.preventDefault();
+    inputChange = () =>{
+      // i.preventDefault();
       this.props.onAddTodo(this.state);
       
     }
+   
     render() {
     return (
       <Container style={styles.Body}>

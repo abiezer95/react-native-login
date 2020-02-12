@@ -12,10 +12,15 @@ import SignUp from '../components/SignUp'
 it('Login habdledInput', () => {
     const tree = renderer.create(<Login/>).getInstance()
     expect(tree.handledInput({text: 'DATAS'})).toBe('DATAS')
-    expect(tree.handledInput('data')).toBe(undefined)
-    // expect(tree.inputChange('data')).toBe(undefined)
+   
 })
-
+it('Login ccc', () => {
+    const tree = renderer.create(<Login/>).getInstance()
+    // expect(tree.handledInput({text: 'DATAS'})).toBe('DATAS')
+    expect(tree.inputChange()).toBe(true)
+    expect(tree.onAddTodo())
+   
+})
 jest.useFakeTimers();
 
 // class homeTest extends Component {
