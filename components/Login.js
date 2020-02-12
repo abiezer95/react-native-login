@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { StyleSheet,Image, Text } from 'react-native';
 import { Container,
@@ -18,19 +17,17 @@ export default class Login extends React.Component {
         // isLogined: false
       }
     }
-    handledInput = ({text}, name) => {
+    handledInput = (name, value) => {
       this.setState({
-          [name]: text
+          [name]: value
       })
 
       return this.state[name]
     }             
-    // inputChange = () => {
-    //   // i.preventDefault();
-    //   this.props.onAddTodo(this.state);
-    // }
+    
     handledLoginPress = () => {
-      this.props.onAddTodo(this.state)
+      // this.props.onAddTodo(this.state)
+      return true;
     }
     
     render() {
@@ -45,13 +42,13 @@ export default class Login extends React.Component {
             <Form style={styles.information} onSubmit={this.inputChange}>
             <Item>
             <Icon name='people' />
-                <Input testId='username' style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChange={(nativeEvent) => this.handledInput(nativeEvent, 'user')} value={this.state.user}/>
+                <Input testId='username' style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChange={(nativeEvent) => this.handledInput('user', nativeEvent)} value={this.state.user} id="userName"/>
             </Item>
             <Item>
             <Icon name="key"/>
-                <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={({nativeEvent}) => {
-                  this.handledInput(nativeEvent, 'password')
-                }} value={this.state.password}/>
+                <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(nativeEvent) => {
+                  this.handledInput('password', nativeEvent)
+                }} value={this.state.password} id="password"/>
             </Item>                  
                 <Button light style={styles.adaptationOfButton} onClick={this.handledLoginPress}><Text style={styles.textBtn}>Log in</Text></Button>
             </Form>
