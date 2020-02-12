@@ -25,12 +25,14 @@ export default class Login extends React.Component {
 
       return this.state[name]
     }             
-    inputChange = () =>{
-      // i.preventDefault();
-      this.props.onAddTodo(this.state);
-      
+    // inputChange = () => {
+    //   // i.preventDefault();
+    //   this.props.onAddTodo(this.state);
+    // }
+    handledLoginPress = () => {
+      this.props.onAddTodo(this.state)
     }
-   
+    
     render() {
     return (
       <Container style={styles.Body}>
@@ -48,11 +50,10 @@ export default class Login extends React.Component {
             <Item>
             <Icon name="key"/>
                 <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={({nativeEvent}) => {
-
                   this.handledInput(nativeEvent, 'password')
                 }} value={this.state.password}/>
             </Item>                  
-                <Button light style={styles.adaptationOfButton} onClick={this.onAddTodo}><Text style={styles.textBtn}>Log in</Text></Button>
+                <Button light style={styles.adaptationOfButton} onClick={this.handledLoginPress}><Text style={styles.textBtn}>Log in</Text></Button>
             </Form>
             <Content>
               <Link to="/signup">

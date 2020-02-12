@@ -17,10 +17,15 @@ it('Login habdledInput', () => {
 it('Login ccc', () => {
     const tree = renderer.create(<Login/>).getInstance()
     // expect(tree.handledInput({text: 'DATAS'})).toBe('DATAS')
-    expect(tree.inputChange()).toBe(true)
+    expect(tree.handledLoginPress({text: 'DATAS'})).toBe('DATAS')
     expect(tree.onAddTodo())
    
 })
+// it('should render username input', () => {
+//     let tree = renderer.create(<Login />).toJSON()
+
+//     expect(global.utils.findById(tree, 'user')).toBeDefined()
+// })
 jest.useFakeTimers();
 
 // class homeTest extends Component {
