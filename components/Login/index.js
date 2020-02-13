@@ -5,7 +5,15 @@ import {Button, Container, Content, Form, Icon, Input, Item} from 'native-base';
 
 
 export default class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+  }
+
   render() {
+
+    const {ref} = this;
+
     return (
       <Container style={styles.Body}>
         <Content>

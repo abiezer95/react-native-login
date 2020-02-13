@@ -5,16 +5,28 @@ import StackNavigator from './Navigation/Stack';
 import {NavigationContainer} from "@react-navigation/native";
 
 
-export default function App()  {
-  const ref = useRef(null);
+export default class App extends React.Component {
 
-  Font.loadAsync({
+  state = {
+    loading: true
+  };
+
+  async componentDidMount() {
+    await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
-    }).then(res => res);
+    });
+    this.setState({loading: false});
+  }
+
+  render() {
+    const {loading} = this.state;
     return (
-        <NavigationContainer ref={ref}>
+      loading ? <AppLoading/>
+        :
+        <NavigationContainer>
           <StackNavigator/>
         </NavigationContainer>
     )
+  }
 }

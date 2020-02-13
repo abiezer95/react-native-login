@@ -1,6 +1,5 @@
 import Login from "../../components/Login";
 import SignUp from "../../components/SignUp";
-import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 import React from "react";
 
 
