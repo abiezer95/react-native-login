@@ -6,6 +6,7 @@ import { Container,
   FooterTab,Card ,
   Input,Title, Form, Left} from 'native-base';
 import { Link } from 'react-router-native';
+import {firebaseApp} from '../utils'
 
 
 export default class Login extends React.Component {
@@ -21,13 +22,14 @@ export default class Login extends React.Component {
       this.setState({
           [name]: value
       })
-
       return this.state[name]
     }             
     
     handledLoginPress = () => {
-      // this.props.onAddTodo(this.state)
-      return true;
+      const {email, password} = this.state
+      firebaseApp.auth().signInWithEmailAndPassword(email, password)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
     
     render() {
@@ -39,15 +41,16 @@ export default class Login extends React.Component {
       </Header>
         <Content>
           <Image style={styles.image_style} source={{uri:'https://www.lupusasturias.org/data/fotos/noticias/g_20_historia_clinica_.png'}} />
-            <Form style={styles.information} onSubmit={this.inputChange}>
+            <Form style={styles.information}>
             <Item>
             <Icon name='people' />
-                <Input testId='username' style ={styles.InputDesingExtra} name="user" placeholder="User-Name" onChange={(nativeEvent) => this.handledInput('user', nativeEvent)} value={this.state.user} id="userName"/>
+                <Input keyboardType={'email-address'} testId='username' style ={styles.InputDesingExtra} name="user" placeholder="User-Name" 
+                onChange={(nativeEvent) => this.handledInput('user', nativeEvent.nativeEvent.text )} value={this.state.user} id="userName"/>
             </Item>
             <Item>
             <Icon name="key"/>
-                <Input style ={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(nativeEvent) => {
-                  this.handledInput('password', nativeEvent)
+                <Input secureTextEntry={true} style={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(nativeEvent) => {
+                  this.handledInput('password', nativeEvent.nativeEvent.text)
                 }} value={this.state.password} id="password"/>
             </Item>                  
                 <Button light style={styles.adaptationOfButton} onClick={this.handledLoginPress}><Text style={styles.textBtn}>Log in</Text></Button>

@@ -8,7 +8,24 @@ import { Container,
 import { Link } from 'react-router-native';
 
 export default class SignUp extends React.Component {
-    render() {
+  constructor(){
+    super();
+    this.state = {
+      'email': '',
+      'password': '',
+      'confirmPassword': '',
+      // isLogined: false
+    }
+  } 
+  handledInput = (name, value) => {
+    this.setState({
+      [name] : value
+    })
+  }
+  handledSignUpPress=()=>{
+    return true
+  }
+  render() {
     return (
       <Container style={styles.Body}>
         <Content>
@@ -22,14 +39,14 @@ export default class SignUp extends React.Component {
           
 
        <Form style={styles.information}>
-             <Item>
-              <Icon name='person' />
+             {/* <Item>
+              <Icon name='person' name=""/>
                   <Input style ={styles.InputDesingExtra} placeholder="Name"/>
               </Item>
               <Item>
               <Icon name='people' />
                   <Input style ={styles.InputDesingExtra} placeholder="User-name"/>
-              </Item>
+              </Item> */}
               {/* <Item>
               <Icon name='people' />
                   <Input style ={styles.InputDesingExtra} placeholder="Fecha">
@@ -38,19 +55,19 @@ export default class SignUp extends React.Component {
               </Item> */}
               <Item>
               <Icon name='mail' />
-                  <Input style ={styles.InputDesingExtra} placeholder="Email"/>
+                  <Input style ={styles.InputDesingExtra} id="email" name="email" value={this.state.email} onChange={(nativeEvent)=>this.handledInput('email',nativeEvent)} placeholder="Email"/>
               </Item> 
               <Item>
               <Icon name="key"/>
-                  <Input style ={styles.InputDesingExtra} placeholder="Password"/>
+                  <Input style ={styles.InputDesingExtra} id="password" name="password" value={this.state.password} onChange={(nativeEvent)=>this.handledInput('password', nativeEvent)} placeholder="Password"/>
               {/* </Item>    
                <Item>
               <Icon name="key"/> */}
-                  <Input style ={styles.InputDesingExtra} placeholder="Confirm Password"/>
+                  <Input style ={styles.InputDesingExtra} id="confirmPassword" name="confirmPassword" value={this.state.confirmPassword} onChanget={(nativeEvent)=>this.handledInput('confirmPassword', nativeEvent)} placeholder="Confirm Password"/>
               </Item>
                             
               
-                    <Button light style={styles.adaptationOfButton} ><Text style={styles.textBtn}>Register</Text></Button>
+                    <Button light style={styles.adaptationOfButton} onClick={this.handledSignUpPress}><Text style={styles.textBtn}>Register</Text></Button>
               
              </Form>
              </Content>
