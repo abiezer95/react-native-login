@@ -1,19 +1,31 @@
-import React, {Component} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen'
+import React from 'react';
+import {Image, StyleSheet, Text} from 'react-native';
 import {Button, Container, Content, Form, Icon, Input, Item} from 'native-base';
+import {Link} from 'react-router-native';
 
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.ref = React.createRef();
+export default class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      'user': '',
+      'password': '',
+    }
   }
 
+  handledInput = (name, value) => {
+    this.setState({
+      [name]: value
+    });
+
+    return this.state[name]
+  };
+
+  handledLoginPress = () => {
+    const {email, password} = this.state;
+  };
+
   render() {
-
-    const {ref} = this;
-
     return (
       <Container style={styles.Body}>
         <Content>
@@ -22,21 +34,27 @@ export default class Login extends Component {
           <Form style={styles.information}>
             <Item>
               <Icon name='people'/>
-              <Input style={styles.InputDesingExtra} placeholder="User-Name"/>
+              <Input testId='username' style={styles.InputDesingExtra} name="user" placeholder="E-mail"
+                     onChange={(event) => this.handledInput('email', event.nativeEvent.text)} value={this.state.email}
+                     id="userName"/>
             </Item>
             <Item>
               <Icon name="key"/>
-              <Input style={styles.InputDesingExtra} placeholder="Password"/>
+              <Input style={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(event) => {
+                this.handledInput('password', event.nativeEvent.text)
+              }} value={this.state.password} id="password"/>
             </Item>
-            <Button light style={styles.adaptationOfButton} onPress={() => {
-              alert('Bienvenido/a!')
-            }}><Text style={styles.textBtn}>Log in</Text></Button>
+            <Button light style={styles.adaptationOfButton} onPress={() => this.handledLoginPress()}><Text
+              style={styles.textBtn}>Log in</Text></Button>
           </Form>
-          <TouchableOpacity light style={styles.adaptationOfButton} onPress={() => ref.current?.navigate('sign-up')}>
-            <Text style={styles.textBtn}>Register</Text>
-          </TouchableOpacity>
+          <Content>
+            <Link to="/signup">
+              <Text style={{marginBottom: 50, textAlign: 'center', fontSize: 16}}>You don't have an
+                account?</Text></Link>
+          </Content>
         </Content>
       </Container>
+      // Register
     );
   }
 }
@@ -46,23 +64,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#DCB2A9'
   },
   image_style: {
-    flex: 1,
-    height: wp('40%'),
-    justifyContent: 'center',
+    marginLeft: '6%',
     marginTop: 15,
-    width: wp('40%'),
-    marginHorizontal: wp('30%'),
+    height: 200,
+    width: "95%",
+    flex: 1,
+    borderRadius: 500
   },
   information: {
     flex: 1,
     backgroundColor: '#FCFCF8',
+    marginTop: '5%',
     margin: '5%',
-    width: wp('90%'),
-    alignContent: 'center',
+    width: '90%',
+    height: 400,
+    alignItems: 'center',
     borderRadius: 10,
-    justifyContent: 'space-between',
-    paddingHorizontal: '2%',
-    paddingVertical: '10%'
+    justifyContent: 'center',
+    padding: '2%',
+    paddingTop: 100,
+    paddingBottom: '1%',
   },
   InputDesingExtra: {
     borderColor: 'transparent',
@@ -70,7 +91,7 @@ const styles = StyleSheet.create({
     padding: 5,
     width: '100%'
   },
-  paddingAdditional: {
+  paddingAdictional: {
     paddingTop: 30
   },
   adaptationOfButton: {
@@ -84,10 +105,6 @@ const styles = StyleSheet.create({
     padding: 1,
     fontWeight: 'bold',
     textAlign: 'center',
-    // fontFamily: 'Cochin',
-
   },
-
-
 });
-module.export = Login
+module.export = Login;

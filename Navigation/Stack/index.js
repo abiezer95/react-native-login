@@ -12,6 +12,7 @@ export default class StackNavigator extends Component {
       <Stack.Navigator>
         {Routes.map((route, index) =>
           <Stack.Screen
+            key={index}
             name={route.name}
             component={route.component}
             options={{

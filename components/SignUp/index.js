@@ -1,49 +1,52 @@
-// import * as React from 'react';
-// import { styles } from '../assets/Main_style';
-// import { View, Dimensions, Image, Text } from 'react-native';
-// import { Container, Header, Content, Form, Item, Input, Label, Button, DatePicker } from 'native-base';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-// import { Link } from "react-router-native";
-
-// var d = new Date();
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from "react-native-responsive-screen";
-import {Button, Container, Form, Icon, Input, Item} from 'native-base';
+import {Image, StyleSheet, Text} from 'react-native';
+import {Button, Container, Content, Form, Icon, Input, Item} from 'native-base';
 
-export default class Index extends React.Component {
+export default class SignUp extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      'name': '',
+      'user': '',
+      'email': '',
+      'password': '',
+      'confirmPassword': ''
+    }
+  }
+
+  handledInput = (name, value) => {
+    this.setState({
+      [name]: value
+    });
+
+    return this.state[name];
+  }
+
   render() {
     return (
       <Container style={styles.Body}>
-        <Form style={styles.information}>
-          <Item>
-            <Icon name='people'/>
-            <Input style={styles.InputDesingExtra} placeholder="Name"/>
-          </Item>
-          <Item>
-            <Icon name='people'/>
-            <Input style={styles.InputDesingExtra} placeholder="User-name"/>
-          </Item>
-          <Item>
-            <Icon name='people'/>
-            <Input style={styles.InputDesingExtra} placeholder="Fecha">
-              {/* <DatePicker placeHolderText="Select date"/> */}
-            </Input>
-          </Item>
-          <Item>
-            <Icon name="key"/>
-            <Input style={styles.InputDesingExtra} placeholder="Password"/>
-          </Item>
-          <Item>
-            <Icon name="key"/>
-            <Input style={styles.InputDesingExtra} placeholder=""/>
-          </Item>
+        <Content>
+          <Image style={styles.image_style} source={{uri: 'https://i.ya-webdesign.com/images/clipboard-to-png-7.png'}}/>
 
-          <Button light style={styles.adaptationOfButton} onPress={() => {
-            alert('Bienvenido/a !')
-          }}><Text style={styles.textBtn}>Register</Text></Button>
+          <Form style={styles.information}>
+            <Item>
+              <Icon name='mail'/>
+              <Input style={styles.InputDesingExtra} placeholder="Email" id="email"
+                     onChange={(env) => this.handledInput('email', env)} value={this.state.email} name='email'/>
+            </Item>
+            <Item>
+              <Icon name="key"/>
+              <Input style={styles.InputDesingExtra} placeholder="Password" id="password"
+                     onChange={(env) => this.handledInput('password', env)} value={this.state.password}
+                     name='password'/>
 
-        </Form>
+              <Input style={styles.InputDesingExtra} placeholder="Confirm Password" id="confirmPassword"
+                     onChange={(env) => this.handledInput('confirmPassword', env)} value={this.state.confirmPassword}/>
+            </Item>
+
+            <Button light style={styles.adaptationOfButton}><Text style={styles.textBtn}>Register</Text></Button>
+          </Form>
+        </Content>
       </Container>
     );
   }
@@ -52,14 +55,13 @@ export default class Index extends React.Component {
 
 const styles = StyleSheet.create({
   Body: {
-    backgroundColor: '#DCB2A9',
-    width: wp('100%')
+    backgroundColor: '#DCB2A9'
   },
   image_style: {
     marginLeft: '23%',
     marginTop: 15,
     height: 200,
-    width: "60%",
+    width: "55%",
     flex: 1,
     borderRadius: 500
   },
@@ -69,12 +71,15 @@ const styles = StyleSheet.create({
   information: {
     flex: 1,
     backgroundColor: '#FCFCF8',
-    marginTop: '5%',
-    margin: '5%',
+    marginTop: '1%',
+    margin: '2%',
+    width: '96%',
+    // height:500,
     alignItems: 'center',
     borderRadius: 10,
     justifyContent: 'center',
-    padding: '2%',
+    // padding:'2%',
+    paddingTop: 70,
     paddingBottom: '1%',
   },
   InputDesingExtra: {
@@ -96,9 +101,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     // fontFamily: 'Cochin',
-
   },
-
-
 });
-module.export = Index;
