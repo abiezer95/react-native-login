@@ -55,8 +55,6 @@ export default class SignUp extends React.Component {
              </Form>
              </Content>
              <Footer/>
-
-
       </Container>
     );
   }
