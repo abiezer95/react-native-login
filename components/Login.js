@@ -8,7 +8,6 @@ import { Container,
 import { Link } from 'react-router-native';
 import {firebaseApp} from '../utils'
 
-
 export default class Login extends React.Component {
     constructor(){
       super();

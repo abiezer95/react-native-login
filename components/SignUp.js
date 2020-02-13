@@ -26,6 +26,7 @@ export default class SignUp extends React.Component {
     return true
   }
   render() {
+
     return (
       <Container style={styles.Body}>
         <Content>
@@ -36,44 +37,24 @@ export default class SignUp extends React.Component {
           </Button></Left>
           </Header>
           <Image style={styles.image_style} source={{uri:'https://i.ya-webdesign.com/images/clipboard-to-png-7.png'}} />
-          
-
+        
        <Form style={styles.information}>
-             {/* <Item>
-              <Icon name='person' name=""/>
-                  <Input style ={styles.InputDesingExtra} placeholder="Name"/>
-              </Item>
               <Item>
-              <Icon name='people' />
-                  <Input style ={styles.InputDesingExtra} placeholder="User-name"/>
-              </Item> */}
-              {/* <Item>
-              <Icon name='people' />
-                  <Input style ={styles.InputDesingExtra} placeholder="Fecha">
-                    <DatePicker placeHolderText="Select date"/>
-                  </Input>
-              </Item> */}
-              <Item>
-              <Icon name='mail' />
-                  <Input style ={styles.InputDesingExtra} id="email" name="email" value={this.state.email} onChange={(nativeEvent)=>this.handledInput('email',nativeEvent)} placeholder="Email"/>
+                  <Icon name='mail' />
+                  <Input style ={styles.InputDesingExtra} placeholder="Email" id="email" onChange={(env) => this.handledInput('email', env)} value={this.state.email} name='email'/>
               </Item> 
-              <Item>
-              <Icon name="key"/>
-                  <Input style ={styles.InputDesingExtra} id="password" name="password" value={this.state.password} onChange={(nativeEvent)=>this.handledInput('password', nativeEvent)} placeholder="Password"/>
-              {/* </Item>    
-               <Item>
-              <Icon name="key"/> */}
-                  <Input style ={styles.InputDesingExtra} id="confirmPassword" name="confirmPassword" value={this.state.confirmPassword} onChanget={(nativeEvent)=>this.handledInput('confirmPassword', nativeEvent)} placeholder="Confirm Password"/>
-              </Item>
-                            
-              
-                    <Button light style={styles.adaptationOfButton} onClick={this.handledSignUpPress}><Text style={styles.textBtn}>Register</Text></Button>
-              
+                <Item>
+                  <Icon name="key"/>
+                  <Input style ={styles.InputDesingExtra} placeholder="Password" id="password" onChange={(env) => this.handledInput('password', env)} value={this.state.password} name='password'/>
+                
+                  <Input style ={styles.InputDesingExtra} placeholder="Confirm Password" id="confirmPassword" onChange={(env) => this.handledInput('confirmPassword', env)} value={this.state.confirmPassword}/>
+                </Item>
+
+                    <Button light style={styles.adaptationOfButton} ><Text style={styles.textBtn}>Register</Text></Button>
              </Form>
              </Content>
              <Footer/>
-
-
+             
       </Container>
     );
   }
@@ -99,15 +80,15 @@ const styles = StyleSheet.create({
   information: {
     flex: 1,
     backgroundColor: '#FCFCF8',
-    marginTop:'5%',
+    marginTop:'1%',
     margin:'2%',
     width:'96%',
-    height:500,
+    // height:500,
     alignItems: 'center',
     borderRadius:10,
     justifyContent: 'center',
-    padding:'2%',
-    paddingTop:100,
+    // padding:'2%',
+    paddingTop:70,
     paddingBottom:'1%',
   },
   InputDesingExtra:{
