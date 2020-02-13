@@ -3,7 +3,6 @@ import React from 'react';
 import regex from '../assets/testing_src/Regular_expresions_login';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-
 import SignUp from '../components/SignUp'
 
 describe('<SignUp />',()=>{

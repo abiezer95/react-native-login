@@ -7,7 +7,6 @@ import { Container,
   Input,Title, Form, Left} from 'native-base';
 import { Link } from 'react-router-native';
 
-
 export default class Login extends React.Component {
     constructor(){
       super();
@@ -26,7 +25,6 @@ export default class Login extends React.Component {
     }             
     
     handledLoginPress = () => {
-      // this.props.onAddTodo(this.state)
       return true;
     }
     
