@@ -7,6 +7,9 @@ import { shallow } from 'enzyme';
 import Login from '../components/Login';
 import App from '../App'
 
+
+//     expect(tree.handledLoginPress(tree, 'user')).toBeDefined()
+// })
 jest.useFakeTimers();
 
 test('Login test user-name', () => {
@@ -22,33 +25,31 @@ test('Login test phoneNumber', () => {
 });
 
 describe('<Login />',()=>{
-    const login = renderer.create(<Login/>);
-    expect(login) //render test
+    const login = renderer.create(<Login/>).getInstance();
+    expect(login)
 
-    it('Login habdledInput function', () => {
-        expect(login.getInstance().handledInput('user', 'admin')).toBe('admin')
-        expect(login.getInstance().handledInput('password', '12345')).toBe('12345')
+    test('Login habdledInput function', () => {
+        expect(login.handledInput('user', 'admin')).toBe('admin')
+        expect(login.handledInput('password', '12345')).toBe('12345')
     })
 
     const component = shallow(<Login />);
 
     it('Input user onchage function', () => {
-        component.find('#userName').simulate('change', {target: {value: 'admin'}});
-        expect(component.find('#userName').prop('value').target.value).toBe('admin');
+        component.find('#userName').simulate('change', {nativeEvent: {text: 'admin'}});
+        expect(component.find('#userName').prop('value')).toBe('admin');
     })
     
     it('Input password onchage function', () => {
-        component.find('#password').simulate('change', {target: {value: '12345'}});
-        expect(component.find('#password').prop('value').target.value).toBe('12345');
+        component.find('#password').simulate('change', {nativeEvent: {text: '12345'}});
+        expect(component.find('#password').prop('value')).toBe('12345');
     })
 
     test('Login submit', () => {
         const tree = renderer.create(<Login/>).getInstance()
+        tree.setState({email: 'test@test.com', password: '12345678'})
+        console.log(tree.handledLoginPress())
+
         expect(tree.handledLoginPress()).toBe(true)
     })
-});
-
-test('<App />',()=>{
-    const app = renderer.create(<App />);
-    expect(app)
 });
