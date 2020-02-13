@@ -22,13 +22,13 @@ export default class Login extends React.Component {
           [name]: value
       })
       return this.state[name]
-    }             
-    
+    }
     handledLoginPress = () => {
       const {email, password} = this.state
-      firebaseApp.auth().signInWithEmailAndPassword(email, password)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+
+      const response = firebaseApp.auth().signInWithEmailAndPassword(email, password).then(res => res).catch(err => err)
+
+      console.log(response)
     }
     
     render() {
@@ -44,7 +44,7 @@ export default class Login extends React.Component {
             <Item>
             <Icon name='people' />
                 <Input keyboardType={'email-address'} testId='username' style ={styles.InputDesingExtra} name="user" placeholder="User-Name" 
-                onChange={(nativeEvent) => this.handledInput('user', nativeEvent.nativeEvent.text )} value={this.state.user} id="userName"/>
+                onChange={(nativeEvent) => this.handledInput('email', nativeEvent.nativeEvent.text )} value={this.state.email} id="userName"/>
             </Item>
             <Item>
             <Icon name="key"/>
@@ -52,7 +52,7 @@ export default class Login extends React.Component {
                   this.handledInput('password', nativeEvent.nativeEvent.text)
                 }} value={this.state.password} id="password"/>
             </Item>                  
-                <Button light style={styles.adaptationOfButton} onClick={this.handledLoginPress}><Text style={styles.textBtn}>Log in</Text></Button>
+                <Button light style={styles.adaptationOfButton} onPress={() => this.handledLoginPress()}><Text style={styles.textBtn}>Log in</Text></Button>
             </Form>
             <Content>
               <Link to="/signup">
