@@ -12,10 +12,13 @@
   },
   "jest": {
     "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
-      "!*/coverage/*",
+      "!coverage/**/*",
       "!.expo/**",
       "!.vs/**",
       "!.idea/**",
@@ -31,31 +34,32 @@
   "devDependencies": {
     "babel-preset-expo": "^7.0.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "jest": "^25.1.0",
-    "react-native-responsive-screen": "^1.4.0"
+    "jest": "^25.1.0"
   },
   "dependencies": {
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "jest-enzyme": "^7.1.2",
-    "react-dom": "^16.12.0",
-    "react-router-native": "^5.1.2",
     "@react-native-community/masked-view": "0.1.5",
     "@react-navigation/drawer": "^5.0.0",
     "@react-navigation/native": "^5.0.0",
     "@react-navigation/stack": "^5.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "expo": "^36.0.2",
     "expo-font": "latest",
+    "firebase": "^7.8.2",
+    "jest-enzyme": "^7.1.2",
     "jest-expo": "^36.0.1",
     "jest-react-native": "^18.0.0",
     "native-base": "2.13.8",
     "react": "16.9.0",
+    "react-dom": "^16.12.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
     "react-native-gesture-handler": "~1.5.0",
     "react-native-reanimated": "~1.4.0",
     "react-native-safe-area-context": "0.6.0",
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-vector-icons": "6.6.0",
-    "react-test-renderer": "^16.12.0"
+    "react-router-native": "^5.1.2",
+    "react-test-renderer": "^16.12.0",
+    "react-native-responsive-screen": "^1.4.0"
   }
 }

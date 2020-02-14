@@ -5,7 +5,6 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 // 
 import Login from '../components/Login';
-import App from '../App'
 
 
 //     expect(tree.handledLoginPress(tree, 'user')).toBeDefined()
@@ -35,12 +34,12 @@ describe('<Login />',()=>{
 
     const component = shallow(<Login />);
 
-    it('Input user onchage function', () => {
+    it('Input user onchange function', () => {
         component.find('#userName').simulate('change', {nativeEvent: {text: 'admin'}});
         expect(component.find('#userName').prop('value')).toBe('admin');
     })
     
-    it('Input password onchage function', () => {
+    it('Input password onchange function', () => {
         component.find('#password').simulate('change', {nativeEvent: {text: '12345'}});
         expect(component.find('#password').prop('value')).toBe('12345');
     })
@@ -48,8 +47,14 @@ describe('<Login />',()=>{
     test('Login submit', () => {
         const tree = renderer.create(<Login/>).getInstance()
         tree.setState({email: 'test@test.com', password: '12345678'})
-        console.log(tree.handledLoginPress())
 
-        expect(tree.handledLoginPress()).toBe(true)
+        tree.handledLoginPress().then(res => expect(res).toBe(true))
     })
+
+    test('Login Button', () => {
+        const button = shallow(<Login/>).find('#loginButton');
+        expect(button.exists()).toBe(true)
+        expect(!!button.simulate('press')).toBe(true)
+      }
+    )
 });

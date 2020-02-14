@@ -6,10 +6,13 @@ import {NavigationContainer} from "@react-navigation/native";
 
 
 export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true
+    };
+  }
 
-  state = {
-    loading: true
-  };
 
   async componentDidMount() {
     await Font.loadAsync({

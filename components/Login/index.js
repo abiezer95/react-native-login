@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, Text} from 'react-native';
 import {Button, Container, Content, Form, Icon, Input, Item} from 'native-base';
 import {Link} from 'react-router-native';
+import {firebaseApp} from "../../utils";
 
 
 export default class Login extends React.Component {
@@ -21,8 +22,10 @@ export default class Login extends React.Component {
     return this.state[name]
   };
 
-  handledLoginPress = () => {
+  handledLoginPress = async () => {
     const {email, password} = this.state;
+
+    return await firebaseApp.auth().signInWithEmailAndPassword(email, password).catch(err => err);
   };
 
   render() {
@@ -40,21 +43,20 @@ export default class Login extends React.Component {
             </Item>
             <Item>
               <Icon name="key"/>
-              <Input style={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(event) => {
+              <Input secureTextEntry={true} style={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(event) => {
                 this.handledInput('password', event.nativeEvent.text)
               }} value={this.state.password} id="password"/>
             </Item>
-            <Button light style={styles.adaptationOfButton} onPress={() => this.handledLoginPress()}><Text
+            <Button id={'loginButton'} light style={styles.adaptationOfButton} onPress={() => this.handledLoginPress()}><Text
               style={styles.textBtn}>Log in</Text></Button>
           </Form>
           <Content>
-            <Link to="/signup">
+            <Link to="/sign-up">
               <Text style={{marginBottom: 50, textAlign: 'center', fontSize: 16}}>You don't have an
                 account?</Text></Link>
           </Content>
         </Content>
       </Container>
-      // Register
     );
   }
 }
