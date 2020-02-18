@@ -7,7 +7,6 @@ import Routes from "./routes";
 export default class StackNavigator extends Component {
   render() {
     const Stack = createStackNavigator();
-
     return (
       <Stack.Navigator>
         {Routes.map((route, index) =>

@@ -1,4 +1,5 @@
-import React, {useRef} from 'react';
+/* istanbul ignore file */
+import React from 'react';
 import * as Font from 'expo-font';
 import {AppLoading} from "expo";
 import StackNavigator from './Navigation/Stack';
@@ -12,8 +13,6 @@ export default class App extends React.Component {
       loading: true
     };
   }
-
-
   async componentDidMount() {
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
@@ -24,6 +23,7 @@ export default class App extends React.Component {
 
   render() {
     const {loading} = this.state;
+
     return (
       loading ? <AppLoading/>
         :

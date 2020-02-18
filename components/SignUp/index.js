@@ -1,16 +1,20 @@
 import React from 'react';
-import {Image, StyleSheet, Text} from 'react-native';
-import {Button, Container, Content, Form, Icon, Input, Item} from 'native-base';
+import {Image, Text} from 'react-native';
+import {Button, Container, Content, Form, Icon, Input, Item, View} from 'native-base';
+import {styles} from "./styles";
+import {firebaseApp as firebase} from '../../utils'
+import regex from '../../assets/testing_src/Regular_expresions_login'
 
 export default class SignUp extends React.Component {
   constructor() {
     super();
     this.state = {
-      'name': '',
-      'user': '',
-      'email': '',
-      'password': '',
-      'confirmPassword': ''
+      name: '',
+      user: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      messageError: ''
     }
   }
 
@@ -22,7 +26,29 @@ export default class SignUp extends React.Component {
     return this.state[name];
   }
 
+  validateInputs() {
+    const {email, password, confirmPassword} = this.state;
+
+    console.log(email, password, confirmPassword)
+
+    return regex.email.test(email) && password === confirmPassword && password.length >= 8
+  }
+
+  async signIn() {
+    const {email, password} = this.state;
+
+    if (this.validateInputs()) {
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
+        this.setState({messageError: null});
+        return res
+      }).catch(({message}) => this.setState({messageError: message}))
+    } else {
+      this.setState({messageError: "Invalid email or password doesn't match"})
+    }
+  }
+
   render() {
+    const {messageError} = this.state;
     return (
       <Container style={styles.Body}>
         <Content>
@@ -32,19 +58,22 @@ export default class SignUp extends React.Component {
             <Item>
               <Icon name='mail'/>
               <Input style={styles.InputDesingExtra} placeholder="Email" id="email"
-                     onChange={(env) => this.handledInput('email', env)} value={this.state.email} name='email'/>
+                     onChange={(env) => this.handledInput('email', env.nativeEvent.text)} value={this.state.email} name='email'/>
             </Item>
             <Item>
               <Icon name="key"/>
-              <Input style={styles.InputDesingExtra} placeholder="Password" id="password"
-                     onChange={(env) => this.handledInput('password', env)} value={this.state.password}
+              <Input secureTextEntry={true} style={styles.InputDesingExtra} placeholder="Password" id="password"
+                     onChange={(env) => this.handledInput('password', env.nativeEvent.text)} value={this.state.password}
                      name='password'/>
-
-              <Input style={styles.InputDesingExtra} placeholder="Confirm Password" id="confirmPassword"
-                     onChange={(env) => this.handledInput('confirmPassword', env)} value={this.state.confirmPassword}/>
+            </Item>
+            <Item>
+              <Icon name="key"/>
+              <Input secureTextEntry={true} style={styles.InputDesingExtra} placeholder="Confirm Password" id="confirmPassword"
+                     onChange={(env) => this.handledInput('confirmPassword', env.nativeEvent.text)} value={this.state.confirmPassword}/>
             </Item>
 
-            <Button light style={styles.adaptationOfButton}><Text style={styles.textBtn}>Register</Text></Button>
+            {!!messageError ? <View style={styles.errorMessage}><Text style={styles.errorText}>{messageError}</Text></View> : null}
+            <Button light style={styles.adaptationOfButton} onPress={() => this.signIn()}><Text style={styles.textBtn}>Register</Text></Button>
           </Form>
         </Content>
       </Container>
@@ -52,54 +81,3 @@ export default class SignUp extends React.Component {
   }
 }
 
-
-const styles = StyleSheet.create({
-  Body: {
-    backgroundColor: '#DCB2A9'
-  },
-  image_style: {
-    marginLeft: '23%',
-    marginTop: 15,
-    height: 200,
-    width: "55%",
-    flex: 1,
-    borderRadius: 500
-  },
-  PaddingExtra: {
-    paddingLeft: 10
-  },
-  information: {
-    flex: 1,
-    backgroundColor: '#FCFCF8',
-    marginTop: '1%',
-    margin: '2%',
-    width: '96%',
-    // height:500,
-    alignItems: 'center',
-    borderRadius: 10,
-    justifyContent: 'center',
-    // padding:'2%',
-    paddingTop: 70,
-    paddingBottom: '1%',
-  },
-  InputDesingExtra: {
-    borderColor: 'transparent',
-    borderWidth: 1, padding: 5, width: '100%'
-  },
-  paddingAdictional: {
-    paddingTop: 30
-  },
-  adaptationOfButton: {
-    width: '80%',
-    justifyContent: 'center',
-    margin: 20,
-
-  },
-  textBtn: {
-    color: '#000',
-    padding: 1,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    // fontFamily: 'Cochin',
-  },
-});

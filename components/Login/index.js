@@ -1,9 +1,7 @@
 import React from 'react';
-import {Image, StyleSheet, Text} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Button, Container, Content, Form, Icon, Input, Item} from 'native-base';
-import {Link} from 'react-router-native';
 import {firebaseApp} from "../../utils";
-
 
 export default class Login extends React.Component {
   constructor() {
@@ -15,9 +13,7 @@ export default class Login extends React.Component {
   }
 
   handledInput = (name, value) => {
-    this.setState({
-      [name]: value
-    });
+    this.setState({[name]: value});
 
     return this.state[name]
   };
@@ -25,7 +21,13 @@ export default class Login extends React.Component {
   handledLoginPress = async () => {
     const {email, password} = this.state;
 
-    return await firebaseApp.auth().signInWithEmailAndPassword(email, password).catch(err => err);
+    return await firebaseApp.auth().signInWithEmailAndPassword(email, password).then(res => {
+      alert('Success');
+      return res
+    }).catch(err => {
+      alert(`Error trying login: ${err.message}`);
+      return err
+    });
   };
 
   render() {
@@ -43,17 +45,20 @@ export default class Login extends React.Component {
             </Item>
             <Item>
               <Icon name="key"/>
-              <Input secureTextEntry={true} style={styles.InputDesingExtra} name="password" placeholder="Password" onChange={(event) => {
-                this.handledInput('password', event.nativeEvent.text)
-              }} value={this.state.password} id="password"/>
+              <Input secureTextEntry={true} style={styles.InputDesingExtra} name="password" placeholder="Password"
+                     onChange={(event) => {
+                       this.handledInput('password', event.nativeEvent.text)
+                     }} value={this.state.password} id="password"/>
             </Item>
             <Button id={'loginButton'} light style={styles.adaptationOfButton} onPress={() => this.handledLoginPress()}><Text
               style={styles.textBtn}>Log in</Text></Button>
           </Form>
           <Content>
-            <Link to="/sign-up">
+            <TouchableOpacity onPress={() => {
+              console.log(this.props.navigation.navigate('Register'))
+            }}>
               <Text style={{marginBottom: 50, textAlign: 'center', fontSize: 16}}>You don't have an
-                account?</Text></Link>
+                account?</Text></TouchableOpacity>
           </Content>
         </Content>
       </Container>

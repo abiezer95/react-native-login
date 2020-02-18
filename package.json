@@ -25,7 +25,8 @@
       "!.expo-shared/**",
       "!*/node_modules/*",
       "!**/babel.config.js",
-      "!**/jest.setup.js"
+      "!**/jest.setup.js",
+      "!./assets/**"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/_test_/setupTests.js"
