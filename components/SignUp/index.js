@@ -29,7 +29,7 @@ export default class SignUp extends React.Component {
   validateInputs() {
     const {email, password, confirmPassword} = this.state;
 
-    console.log(email, password, confirmPassword)
+    // console.log(email, password, confirmPassword)
 
     return regex.email.test(email) && password === confirmPassword && password.length >= 8
   }

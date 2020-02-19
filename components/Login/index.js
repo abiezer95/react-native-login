@@ -21,12 +21,9 @@ export default class Login extends React.Component {
   handledLoginPress = async () => {
     const {email, password} = this.state;
 
-    return await firebaseApp.auth().signInWithEmailAndPassword(email, password).then(res => {
-      alert('Success');
-      return res
-    }).catch(err => {
-      alert(`Error trying login: ${err.message}`);
-      return err
+    return await firebaseApp.auth().signInWithEmailAndPassword(email, password).then(res => {alert('Success');return res
+    })
+    .catch(err => {alert(`Error trying login: ${err.message}`);return err
     });
   };
 
