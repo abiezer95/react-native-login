@@ -11,7 +11,7 @@ describe('<SignUp />',()=>{
     const signup = regedit.getInstance();
     expect(regedit)
     it('singup nodkk funciona',()=>{
-        signup.signIn()
+        
         signup.handledInput('email', 'ememem@gmail.com') 
         signup.handledInput('password', '12345678') 
         signup.handledInput('confirmPassword', '12345678') 
@@ -38,22 +38,29 @@ describe('<SignUp />',()=>{
 
     it('Input email onchage function', () => {
         component.find('#email').simulate('change', {target: {value: 'test@test.com'}});
-        expect(component.find('#email').prop('value').target.value).toBe('test@test.com'); //real input
-        // expect(regex.email.test(component.find('#email').prop('value').target.value)).toBe(true); //test with regex
+        expect(component.find('#email').prop('value')).toBe('test@test.com');
+        // expect(signup.state.email).toBe('test@test.com'); //real input
+        // expect(regex.email.test(signup.state.email)).toBe(true); //test with regex
     })
 
     it('Input password onchage function', () => {
         component.find('#password').simulate('change', {target: {value: 'test@test.com'}});
-        expect(component.find('#password').prop('value').target.value).toBe('test@test.com'); //real input
+        expect(component.find('#password').prop('value')).toBe('test@test.com'); //real input
     })
-    
+    it('On pressed of button', () => {
+        component.find('#btn').simulate('press')
+
+    })
     it('conrmation passwords 2 inputs and onchage function', () => {
-        // component.find('#password').simulate('change', {target: {value: '55587676767'}});
-        component.find('#confirmPassword').simulate('change', {target: {value: '55587676767'}});
-        
-        let p1 = component.find('#password').prop('value').target.value;
-        let p2 = component.find('#confirmPassword').prop('value').target.value;
+        component.find('#password').simulate('change', {target: {value: '555###'}});
+        component.find('#confirmPassword').simulate('change', {target: {value: '555###'}});
+        let p1 = component.find('#password').prop('value');
+        let p2 = component.find('#confirmPassword').prop('value');
 
         expect(p1).toBe(p2); 
+    })
+
+    it('Sign In', () => {
+
     })
 });

@@ -25,7 +25,7 @@ export default class SignUp extends React.Component {
 
     return this.state[name];
   }
-
+  /* istanbul ignore next */
   validateInputs() {
     const {email, password, confirmPassword} = this.state;
 
@@ -38,13 +38,12 @@ export default class SignUp extends React.Component {
     const {email, password} = this.state;
 
     if (this.validateInputs()) {
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
+      return await firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
         this.setState({messageError: null});
         return res
       }).catch(({message}) => this.setState({messageError: message}))
-    } else {
-      this.setState({messageError: "Invalid email or password doesn't match"})
     }
+    this.setState({messageError: "Invalid email or password doesn't match"})
   }
 
   render() {
@@ -58,22 +57,22 @@ export default class SignUp extends React.Component {
             <Item>
               <Icon name='mail'/>
               <Input style={styles.InputDesingExtra} placeholder="Email" id="email"
-                     onChange={(env) => this.handledInput('email', env.nativeEvent.text)} value={this.state.email} name='email'/>
+                     onChange={(env) => this.handledInput('email', env.target.value)} value={this.state.email} name='email'/>
             </Item>
             <Item>
               <Icon name="key"/>
               <Input secureTextEntry={true} style={styles.InputDesingExtra} placeholder="Password" id="password"
-                     onChange={(env) => this.handledInput('password', env.nativeEvent.text)} value={this.state.password}
+                     onChange={(env) => this.handledInput('password', env.target.value)} value={this.state.password}
                      name='password'/>
             </Item>
             <Item>
               <Icon name="key"/>
               <Input secureTextEntry={true} style={styles.InputDesingExtra} placeholder="Confirm Password" id="confirmPassword"
-                     onChange={(env) => this.handledInput('confirmPassword', env.nativeEvent.text)} value={this.state.confirmPassword}/>
+                     onChange={(env) => this.handledInput('confirmPassword', env.target.value)} value={this.state.confirmPassword}/>
             </Item>
 
             {!!messageError ? <View style={styles.errorMessage}><Text style={styles.errorText}>{messageError}</Text></View> : null}
-            <Button light style={styles.adaptationOfButton} onPress={() => this.signIn()}><Text style={styles.textBtn}>Register</Text></Button>
+            <Button id="btn" light style={styles.adaptationOfButton} onPress={() => this.signIn()}><Text style={styles.textBtn}>Register</Text></Button>
           </Form>
         </Content>
       </Container>
