@@ -18,6 +18,7 @@ describe('<SignUp />',()=>{
         // console.log(signup.state.email)
         expect(signup.validateInputs()).toBe(true)
         signup.signIn().then(res => {console.log(res)})
+        
         // expect(signup.state.email).toBe(true)
         // expect(signup.state.password).toBe(true)
 
