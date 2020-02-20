@@ -4,6 +4,7 @@ import regex from '../assets/testing_src/Regular_expresions_login';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import SignUp from '../components/SignUp'
+import {firebaseApp as firebase, firebaseApp} from '../utils'
 
 describe('<SignUp />',()=>{
     const component = shallow(<SignUp />);
@@ -23,6 +24,25 @@ describe('<SignUp />',()=>{
         // expect(signup.state.password).toBe(true)
 
     })
+    
+    it('test of the promise', async ()=>{
+        const info = await firebase.auth().createUserWithEmailAndPassword('ememem@gmail.com','12345678')
+        // console.log(info)
+        expect(info.additionalUserInfo.isNewUser).toBe(true)
+        const user = firebase.auth().currentUser
+        user.delete().catch(err => console.warn(err))
+        // .then((user: firebase.auth.UserCredential) => {
+        //     firebase.auth().signInWithEmailAndPassword('ememem@gmail.com','12345678')
+        // .then((signed:firebase.auth.UserCredential) => {
+        //     let info = signed.user;
+        //     if(info!=null){
+        //         expect(info.user).toEqual('ememem@gmail.com')
+        //     }
+            
+        // })
+        // })
+    })
+
     // it('singup nodd funciona',()=>{
     //     signup.signIn('password','12345')
     //     expect(regex.password.test(signup.state.password)).toBe(true)

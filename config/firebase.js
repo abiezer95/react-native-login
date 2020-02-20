@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 const firebaseConfig = {
   apiKey: "AIzaSyCNLqKEC_wrKocfDJq8BQ3q1d1UB2ZernI",
   authDomain: "med-tegritas.firebaseapp.com",

@@ -20,9 +20,9 @@ export default class Login extends React.Component {
 
   handledLoginPress = async () => {
     const {email, password} = this.state;
-
+    /* istanbul ignore next */
     return await firebaseApp.auth().signInWithEmailAndPassword(email, password).then(res => {alert('Success');return res
-    })
+    })   
     .catch(err => {alert(`Error trying login: ${err.message}`);return err
     });
   };
@@ -51,9 +51,7 @@ export default class Login extends React.Component {
               style={styles.textBtn}>Log in</Text></Button>
           </Form>
           <Content>
-            <TouchableOpacity onPress={() => {
-              console.log(this.props.navigation.navigate('Register'))
-            }}>
+            <TouchableOpacity id={'toucheOpacity'} onPress={() => {console.log('hola')}}>
               <Text style={{marginBottom: 50, textAlign: 'center', fontSize: 16}}>You don't have an
                 account?</Text></TouchableOpacity>
           </Content>

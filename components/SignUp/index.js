@@ -37,6 +37,7 @@ export default class SignUp extends React.Component {
   async signIn() {
     const {email, password} = this.state;
     if (this.validateInputs()) {
+      /* istanbul ignore next */
       return await firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
         this.setState({messageError: null});
         return res

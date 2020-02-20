@@ -1,0 +1,37 @@
+{
+  "additionalUserInfo": { "isNewUser": true, "providerId": "password" },
+  "credential": null,
+  "operationType": "signIn",
+  "user": {
+    "apiKey": "AIzaSyCNLqKEC_wrKocfDJq8BQ3q1d1UB2ZernI",
+    "appName": "[DEFAULT]",
+    "authDomain": "med-tegritas.firebaseapp.com",
+    "createdAt": "1582209236014",
+    "displayName": null,
+    "email": "ememem@gmail.com",
+    "emailVerified": false,
+    "isAnonymous": false,
+    "lastLoginAt": "1582209236014",
+    "phoneNumber": null,
+    "photoURL": null,
+    "providerData": [
+      {
+        "displayName": null,
+        "email": "ememem@gmail.com",
+        "phoneNumber": null,
+        "photoURL": null,
+        "providerId": "password",
+        "uid": "ememem@gmail.com"
+      }
+    ],
+    "redirectEventId": null,
+    "stsTokenManager": {
+      "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImNiOGUwZDk3Mjg2MWIwNGJlN2RjNzVhMWIzYmUzYjIyOWIyNWYyMDUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbWVkLXRlZ3JpdGFzIiwiYXVkIjoibWVkLXRlZ3JpdGFzIiwiYXV0aF90aW1lIjoxNTgyMjA5MjM2LCJ1c2VyX2lkIjoiTDZ5QlI4b1NGRk1kbEU3eXpZbFZZa0d0OElmMSIsInN1YiI6Ikw2eUJSOG9TRkZNZGxFN3l6WWxWWWtHdDhJZjEiLCJpYXQiOjE1ODIyMDkyMzYsImV4cCI6MTU4MjIxMjgzNiwiZW1haWwiOiJlbWVtZW1AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImVtZW1lbUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.gOlaMPPZrx5Qlt8vfYVQJepRPZGUMmT-qnsgpNo3wCRpnV8psLRftFltrpoyr4GK4pxY_f9MvJmBVPwyyH8PXpP1HU3o7ZH7DnR1dMlTcaFcYRtjnfVigSY_6LjIGte3YzNL6nhwh6fvDr7BTkVATQfKLHVIILUDRKHoDxEwmpLn0AS_W2CdjT1Bp5NvArxyEUY9gtdkTXakJim0y2EzcVSjZNfSrZx_mlanmEk9GTk7xBTbV3L8IGEVuKOh8VUPEyGjzxZ-OM2suyrFQRSFk_B3CIsatHfnOSkJuny3jL5dOj8AB2OGrblZK6LK6B155xgnAA3eQq6ZYrdEITWxWA",
+      "apiKey": "AIzaSyCNLqKEC_wrKocfDJq8BQ3q1d1UB2ZernI",
+      "expirationTime": 1582212836124,
+      "refreshToken": "AEu4IL1VtF7WVs-clxhUjwZ1o6XiocMMTo4A-i9bdXLpk6GcrT92Qnrq0kKy0eDeDyAPtyDq88YincgGRNkcJmTjAwaO2LccED4zdlrc3qcGPpyrTR6aVa0j58bpNNlqM8oOXKRSSuWVTRTSx6yGBDvAsDX9O_RsfkhwM_Qh9zsVBqWJuwJRM5m1nTSfMr1UfvTCycR-lIHc"
+    },
+    "tenantId": null,
+    "uid": "L6yBR8oSFFMdlE7yzYlVYkGt8If1"
+  }
+}

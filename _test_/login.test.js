@@ -44,17 +44,21 @@ describe('<Login />',()=>{
         expect(component.find('#password').prop('value')).toBe('12345');
     })
 
-    test('Login submit', () => {
+    test('Login submit', async () => {
         const tree = renderer.create(<Login/>).getInstance()
         tree.setState({email: 'test@test.com', password: '12345678'})
-
-        tree.handledLoginPress().then(res => expect(res).toBe(true))
+        const info = await tree.handledLoginPress().then(res => console.log(res)).catch(err => console.log(err))
+        expect(info).toBe(undefined)
     })
 
     test('Login Button', () => {
         const button = shallow(<Login/>).find('#loginButton');
         expect(button.exists()).toBe(true)
         expect(!!button.simulate('press')).toBe(true)
-      }
-    )
+      })
+      test('Test about TouchableOpacity',() => {
+        const touchable = shallow(<Login/>).find('#toucheOpacity');
+        // expect(touchable.exists()).toBe(true)
+        expect(!!touchable.simulate('press')).toBe(true)
+    })
 });
